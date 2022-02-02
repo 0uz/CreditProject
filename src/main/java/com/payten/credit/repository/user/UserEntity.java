@@ -47,4 +47,13 @@ public class UserEntity {
     private List<CreditEntity> credits;
 
 
+    public UserEntity setModel(UserEntity existingUser) {
+        UserEntity user =  new UserEntity();
+        user.setName(existingUser.getName());
+        user.setSurname(existingUser.getSurname());
+        user.setIdentificationNo(existingUser.getIdentificationNo());
+        user.setPhoneNo(existingUser.getPhoneNo());
+        user.setMonthlyIncome(existingUser.getMonthlyIncome());
+        return user;
+    }
 }

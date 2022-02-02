@@ -34,7 +34,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public Long update(User user) {
-        return null;
+    public Long update(User user, Long userId) {
+        return userDao.update(user.convertToUserEntity(),userId);
     }
+
 }

@@ -28,7 +28,12 @@ public class UserController {
         return UserResponse.convertTo(user);
     }
 
-    //TODO Update and delete
+    @PutMapping("/users/{userId}")
+    @ResponseStatus(HttpStatus.OK)
+    public UserCreateResponse updateUser(@RequestBody UserCreateRequest request, @PathVariable Long userId){
+        Long updatedUser = userService.update(request.toModel(), userId);
+        return UserCreateResponse.builder().id(updatedUser).build();
+    }
 
     @DeleteMapping("/users/{userId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
