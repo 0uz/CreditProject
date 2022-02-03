@@ -34,4 +34,11 @@ public class CreditServiceImpl implements CreditService{
             return Credit.convertFrom(CreditStatus.REJECTED);
         }
     }
+
+    @Override
+    public Credit creditResult(Long identificationNo) {
+       return creditDao.retrieveByIdentificationNo(identificationNo)
+               .map(creditEntity-> Credit.convertFrom(creditEntity,CreditStatus.APPROVED))
+               .orElseGet(() -> Credit.convertFrom(CreditStatus.REJECTED));
+    }
 }

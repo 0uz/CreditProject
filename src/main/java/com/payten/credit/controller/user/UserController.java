@@ -28,6 +28,7 @@ public class UserController {
         return UserResponse.convertTo(user);
     }
 
+
     @PutMapping("/users/{userId}")
     @ResponseStatus(HttpStatus.OK)
     public UserCreateResponse updateUser(@RequestBody UserCreateRequest request, @PathVariable Long userId){

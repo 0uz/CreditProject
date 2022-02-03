@@ -2,16 +2,18 @@ package com.payten.credit.exception;
 
 import lombok.Getter;
 
+import java.util.List;
+
 @Getter
 public class DataNotFoundException extends RuntimeException{
 
     private final ExceptionType exceptionType;
-    private String detail;
+    private List<String> details;
 
-    public DataNotFoundException(ExceptionType exceptionType, String detail) {
+    public DataNotFoundException(ExceptionType exceptionType, List<String> details) {
         super(exceptionType.getMessage());
         this.exceptionType = exceptionType;
-        this.detail = detail;
+        this.details = details;
     }
 
     public DataNotFoundException(ExceptionType exceptionType) {

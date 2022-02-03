@@ -36,6 +36,7 @@ public class User {
 
     public UserEntity convertToUserEntity() {
         UserEntity user = new UserEntity();
+        user.setId(Id);
         user.setName(name);
         user.setSurname(surname);
         user.setIdentificationNo(identificationNo);

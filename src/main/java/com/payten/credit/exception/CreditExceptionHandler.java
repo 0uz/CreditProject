@@ -1,6 +1,7 @@
-package com.payten.credit.controller.common;
+package com.payten.credit.exception;
 
 
+import com.payten.credit.controller.common.ExceptionResponse;
 import com.payten.credit.exception.DataNotFoundException;
 import com.payten.credit.exception.ExceptionType;
 import com.payten.credit.exception.ValidationException;
@@ -20,10 +21,8 @@ public class CreditExceptionHandler {
     @ExceptionHandler(DataNotFoundException.class)
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
     public ExceptionResponse handleDataNotFoundException(DataNotFoundException e){
-        return new ExceptionResponse(e.getExceptionType(), List.of(e.getDetail()));
+        return new ExceptionResponse(e.getExceptionType(), e.getDetails());
     }
-
-
 
     @ExceptionHandler(ValidationException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -34,6 +33,7 @@ public class CreditExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ExceptionResponse handleJavaxValidationException(MethodArgumentNotValidException e){
+        //Collecting all exceptions
         List<String> messages = new ArrayList<>(e.getBindingResult().getAllErrors().stream().map(DefaultMessageSourceResolvable::getDefaultMessage).toList());
         return new ExceptionResponse(ExceptionType.VALIDATION_EXCEPTION,messages);
     }
