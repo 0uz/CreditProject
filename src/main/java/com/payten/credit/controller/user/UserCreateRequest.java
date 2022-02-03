@@ -2,6 +2,7 @@ package com.payten.credit.controller.user;
 
 import com.payten.credit.service.user.User;
 import lombok.Getter;
+import org.hibernate.validator.constraints.Length;
 
 import javax.validation.ValidationException;
 import javax.validation.constraints.Min;
@@ -33,6 +34,10 @@ public class UserCreateRequest {
     @Min(value = 0, message = "Monthly income must be positive")
     private Double monthlyIncome;
 
+    @NotNull(message = "Password must not be empty")
+    @Length(min = 3,max = 8, message = "Password must be 3-8 character")
+    private String password;
+
     public User toModel() {
         return User.builder()
                 .name(name)
@@ -40,6 +45,7 @@ public class UserCreateRequest {
                 .identificationNo(Long.parseLong(identificationNo))
                 .phoneNo(phoneNo)
                 .monthlyIncome(monthlyIncome)
+                .password(password)
                 .build();
     }
 }

@@ -36,6 +36,9 @@ public class UserEntity extends BaseEntity {
     private Integer creditScore;
 
 
+    private String password;
+
+
     @OneToMany(mappedBy = "user")
     private List<CreditEntity> credits;
 

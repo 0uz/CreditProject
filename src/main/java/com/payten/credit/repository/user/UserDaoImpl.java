@@ -2,6 +2,7 @@ package com.payten.credit.repository.user;
 
 import com.payten.credit.repository.common.Status;
 import com.payten.credit.repository.credit.CreditEntity;
+import com.payten.credit.service.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +31,16 @@ public class UserDaoImpl implements UserDao{
                     user.setStatus(Status.DELETED);
                     userJpaRepository.save(user);
                 });
+    }
+
+    @Override
+    public boolean isIdentificationExist(Long identificationNo) {
+        return userJpaRepository.existsByIdentificationNo(identificationNo);
+    }
+
+    @Override
+    public User retrieveByIdentificationNo(Long identificationNo) {
+        return User.convertFrom(userJpaRepository.getByIdentificationNo(identificationNo));
     }
 
 

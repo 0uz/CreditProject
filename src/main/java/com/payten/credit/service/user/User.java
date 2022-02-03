@@ -18,6 +18,7 @@ public class User {
     private LocalDateTime createdDate;
     private Double monthlyIncome;
     private Double creditLimit;
+    private String password;
 
     private final Double CREDIT_MULTIPLIER = 4D;
 
@@ -31,6 +32,7 @@ public class User {
                 .createdDate(retrievedUser.getCreatedDate())
                 .monthlyIncome(retrievedUser.getMonthlyIncome())
                 .creditScore(retrievedUser.getCreditScore())
+                .password(retrievedUser.getPassword())
                 .build();
     }
 
@@ -44,12 +46,19 @@ public class User {
         user.setCreatedDate(createdDate);
         user.setMonthlyIncome(monthlyIncome);
         user.setCreditScore(creditScore);
+        user.setPassword(password);
         return user;
     }
+
+    public void encodePassword(String password) {
+        this.password = password;
+    }
+
 
     // credit limit < 500 REJECTED
     // credit limit < 1000 income < 5000 : 10k ? 20k
     // credit limit >= 1000 income * 4
+
     public boolean calculateCreditStatus() {
         if (creditScore < 500){
             return false;
@@ -65,7 +74,6 @@ public class User {
             return true;
         }
     }
-
 }
 
 

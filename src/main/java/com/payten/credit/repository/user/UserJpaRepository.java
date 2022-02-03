@@ -1,8 +1,9 @@
 package com.payten.credit.repository.user;
 
+import com.payten.credit.service.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Optional;
-
 public interface UserJpaRepository extends JpaRepository<UserEntity, Long> {
+    boolean existsByIdentificationNo(Long identificationNo);
+    UserEntity getByIdentificationNo(Long identificationNo);
 }
