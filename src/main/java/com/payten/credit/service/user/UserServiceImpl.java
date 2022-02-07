@@ -5,13 +5,17 @@ import com.payten.credit.exception.ExceptionType;
 import com.payten.credit.exception.ValidationException;
 import com.payten.credit.repository.user.UserDao;
 import com.payten.credit.repository.user.UserEntity;
+import com.payten.credit.repository.user.redis.UserCache;
 import com.payten.credit.service.creditscore.FakeCreditService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService{
@@ -19,6 +23,7 @@ public class UserServiceImpl implements UserService{
     private final UserDao userDao;
     private final FakeCreditService fakeCreditService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final UserCache userCache;
 
     @Override
     public Long create(User user) {
@@ -34,8 +39,17 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User retrieve(Long id) {
-        return userDao.retrieve(id).map(User::convertFrom)
-                .orElseThrow(() -> new DataNotFoundException(ExceptionType.USER_DATA_NOT_FOUND,List.of("ID:"+id)));
+        Optional<User> user = userCache.retrieveUser(id);
+        log.info("User is retrieving : {}",id);
+        if (user.isEmpty()){
+            log.info("User cache is updating: {}", id);
+            User retrievedUser = userDao.retrieve(id).map(User::convertFrom)
+                    .orElseThrow(() -> new DataNotFoundException(ExceptionType.USER_DATA_NOT_FOUND, List.of("ID:" + id)));
+            userCache.createUser(retrievedUser);
+            return retrievedUser;
+
+        }
+        return user.get();
     }
 
     @Override
@@ -45,7 +59,6 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public Long update(User updateUser, Long userId) {
-        //TODO
         if (userDao.retrieve(userId).isPresent()){
             UserEntity existingUser = userDao.retrieve(userId).get();
             updateUser.setId(userId);
