@@ -2,9 +2,6 @@ package com.payten.credit.exception;
 
 
 import com.payten.credit.controller.common.ExceptionResponse;
-import com.payten.credit.exception.DataNotFoundException;
-import com.payten.credit.exception.ExceptionType;
-import com.payten.credit.exception.ValidationException;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -15,7 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@RestControllerAdvice
 public class CreditExceptionHandler {
 
     @ExceptionHandler(DataNotFoundException.class)

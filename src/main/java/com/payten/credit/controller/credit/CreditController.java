@@ -14,6 +14,7 @@ public class CreditController {
 
     private final CreditService creditService;
 
+
     @PostMapping("/credit-apply/{userId}")
     @ResponseStatus(HttpStatus.OK)
     public CreditApplyResponse creditApply(@PathVariable Long userId){
@@ -21,7 +22,6 @@ public class CreditController {
         return CreditApplyResponse.convertFrom(credit);
     }
 
-    @CrossOrigin
     @GetMapping("/credit")
     @ResponseStatus(HttpStatus.OK)
     public CreditResultResponse creditResult(@RequestParam Long identificationNo){
