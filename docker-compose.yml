@@ -1,0 +1,44 @@
+version: '3'
+services:
+
+  payten-db:
+    image: postgres
+    container_name: payten-postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: payten-user
+      POSTGRES_PASSWORD: payten-password
+      POSTGRES_DB: postgres
+
+  redis:
+    image: bitnami/redis:latest
+    container_name: redis
+    ports:
+      - 6379:6379
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+
+  redis-commander:
+    container_name: redis-commander
+    hostname: redis-commander
+    image: rediscommander/redis-commander:latest
+    restart: always
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+    ports:
+      - 8081:8081
+
+  payten-credit-api:
+    build: ./
+    container_name: payten-credit-api
+    depends_on:
+      - payten-db
+      - redis
+    ports:
+      - 8080:8080
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://payten-db:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=payten-user
+      - SPRING_DATASOURCE_PASSWORD=payten-password
+
