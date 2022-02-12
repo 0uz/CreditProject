@@ -4,6 +4,7 @@ import com.payten.credit.controller.credit.CreditStatus;
 import com.payten.credit.repository.credit.CreditEntity;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Builder
+@Setter
 public class Credit implements Serializable {
     private Long id;
     private Double creditLimit;
