@@ -2,6 +2,7 @@ package com.payten.credit.controller.user;
 
 import com.payten.credit.service.user.User;
 import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.ValidationException;
@@ -11,6 +12,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 @Getter
+@Setter
 public class UserCreateRequest {
 
     @NotBlank(message = "Name must not be empty")

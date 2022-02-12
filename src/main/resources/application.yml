@@ -11,5 +11,5 @@ spring:
       ddl-auto: create-drop
 
   redis:
-    host: redis
+    host: localhost # TODO change redis
     port: 6379

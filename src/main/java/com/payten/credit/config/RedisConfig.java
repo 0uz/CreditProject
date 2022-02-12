@@ -16,7 +16,8 @@ public class RedisConfig {
     @Bean
     public LettuceConnectionFactory lettuceConnectionFactory(){
         RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration();
-        redisStandaloneConfiguration.setHostName("redis");
+        redisStandaloneConfiguration.setHostName("localhost");
+        //TODO CHANGE REDIS
         redisStandaloneConfiguration.setPort(6379);
         return new LettuceConnectionFactory(redisStandaloneConfiguration);
     }

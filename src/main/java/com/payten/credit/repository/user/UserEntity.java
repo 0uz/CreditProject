@@ -52,6 +52,7 @@ public class UserEntity extends BaseEntity {
         user.setPhoneNo(existingUser.getPhoneNo());
         user.setMonthlyIncome(existingUser.getMonthlyIncome());
         user.setCreditScore(existingUser.getCreditScore());
+        user.setCreatedDate(existingUser.getCreatedDate());
         return user;
     }
 }

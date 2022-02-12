@@ -47,6 +47,7 @@ public class User {
         user.setMonthlyIncome(monthlyIncome);
         user.setCreditScore(creditScore);
         user.setPassword(password);
+        user.setCreatedDate(createdDate);
         return user;
     }
 

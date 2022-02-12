@@ -62,6 +62,8 @@ public class UserServiceImpl implements UserService{
         if (userDao.retrieve(userId).isPresent()){
             UserEntity existingUser = userDao.retrieve(userId).get();
             updateUser.setId(userId);
+            updateUser.setCreatedDate(existingUser.getCreatedDate());
+            updateUser.setPassword(bCryptPasswordEncoder.encode(updateUser.getPassword()));
             updateUser.setCreditScore(existingUser.getCreditScore());
             UserEntity userEntity = existingUser.setModel(updateUser.convertToUserEntity());
             return userDao.create(userEntity);
