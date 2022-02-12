@@ -2,8 +2,6 @@ package com.payten.credit.config;
 
 import com.payten.credit.repository.credit.redis.CacheCredit;
 import com.payten.credit.repository.user.redis.CacheUser;
-import com.payten.credit.service.credit.Credit;
-import com.payten.credit.service.user.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
@@ -18,7 +16,7 @@ public class RedisConfig {
     @Bean
     public LettuceConnectionFactory lettuceConnectionFactory(){
         RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration();
-        redisStandaloneConfiguration.setHostName("localhost");
+        redisStandaloneConfiguration.setHostName("redis");
         redisStandaloneConfiguration.setPort(6379);
         return new LettuceConnectionFactory(redisStandaloneConfiguration);
     }

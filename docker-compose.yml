@@ -10,6 +10,8 @@ services:
       POSTGRES_USER: payten-user
       POSTGRES_PASSWORD: payten-password
       POSTGRES_DB: postgres
+    networks:
+      - paytenNetwork
 
   redis:
     image: bitnami/redis:latest
@@ -18,6 +20,8 @@ services:
       - 6379:6379
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - paytenNetwork
 
   redis-commander:
     container_name: redis-commander
@@ -28,6 +32,8 @@ services:
       - REDIS_HOSTS=local:redis:6379
     ports:
       - 8081:8081
+    networks:
+      - paytenNetwork
 
   payten-credit-api:
     build: ./
@@ -41,4 +47,9 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://payten-db:5432/postgres
       - SPRING_DATASOURCE_USERNAME=payten-user
       - SPRING_DATASOURCE_PASSWORD=payten-password
+    networks:
+      - paytenNetwork
 
+networks:
+  paytenNetwork:
+    driver: "bridge"
