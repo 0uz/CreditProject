@@ -17,12 +17,16 @@ docker-compose up --force-recreate
 :white_check_mark: Spring Boot <br>
 :white_check_mark: Postgresql <br>
 :white_check_mark: Redis <br>
+:white_check_mark: JWT Security <br>
 :white_check_mark: Docker <br>
 
 ### Tools
 
 :white_check_mark: Swagger Open API <br>
 :white_check_mark: Redis Commander <br>
+
+### Architecture
+Layered architecture used for this project. With Layered architecture easy to manage layers and adding features, its decreasing complexity, Thats why i used layered architecture.
 
 ---
 
@@ -34,13 +38,13 @@ http://localhost:8080/swagger-ui/index.html
 ```
 ![swagger](photo/swagger-ui.png)
 
-###Redis Commander
+### Redis Commander
 
 ```html
 http://localhost:8081
 ```
 
-<img src="photo/redis-commander.png" width="500">
+<img src="photo/redis-commander.png" width="600">
 
 ---
 
