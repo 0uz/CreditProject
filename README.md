@@ -18,19 +18,24 @@ docker-compose up --force-recreate
 :white_check_mark: Postgresql <br>
 :white_check_mark: Redis <br>
 :white_check_mark: Docker <br>
+
 ###Tools
+
 :white_check_mark: Swagger Open API <br>
 :white_check_mark: Redis Commander <br>
 
 ---
+
 ## Documentation
 ###Swagger
+
 ```html
 http://localhost:8080/swagger-ui/index.html
 ```
 ![swagger](photo/swagger-ui.png)
 
 ###Redis Commander
+
 ```html
 http://localhost:8081
 ```
@@ -38,7 +43,9 @@ http://localhost:8081
 <img src="photo/redis-commander.png" width="500">
 
 ---
+
 ##Frontend
+
 ```html
 cd CreditProjectFrontend
 .\landingPage.html
@@ -46,11 +53,14 @@ cd CreditProjectFrontend
 <img src="photo/login.png" width="500"> <br>
 <img src="photo/register.png" width="500"> <br>
 <img src="photo/creditResult.png" width="500"><br>
+
 ---
+
 ##Exception Handling
 Exceptions handled<br>
 ![exception](photo/exceptionHandle1.png)
 ![exception](photo/exceptionHandle2.png)
+
 ---
 
 ## Tests
