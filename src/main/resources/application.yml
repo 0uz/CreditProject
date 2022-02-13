@@ -10,6 +10,6 @@ spring:
     hibernate:
       ddl-auto: create-drop
 
-  redis:
-    host: localhost # TODO change redis
-    port: 6379
+redis:
+  host: localhost # TODO change redis
+  port: 6379

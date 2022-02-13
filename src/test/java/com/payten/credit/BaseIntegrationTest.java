@@ -10,7 +10,7 @@ import org.springframework.boot.web.server.LocalServerPort;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class BaseIntegrationTest {
 
-    protected String BEARER_TOKEN = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMzE5Mjc5NjY4MiIsImV4cCI6MTY0NTA5MzEyNn0.9xLGDLsivf4ALkt8woGah1vShJLPPZ1qLo_1s8Io-9EPj1l2tI9_AVJ3zOj0GkIrfmlZsYNd-5W_4eRD7thb0g";
+    protected String BEARER_TOKEN = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMzE5Mjc5NjY4MiJ9.ogit1YZGgT616n6mOhjDPM-bpQwslLgM6JZ_IM4wYvaL0j4qeuhMOlAlMFSMZJLoSVb6x0MAGTvA8UIEd2cfOQ";
 
     @LocalServerPort
     protected int serverPort;
