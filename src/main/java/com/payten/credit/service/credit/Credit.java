@@ -2,6 +2,8 @@ package com.payten.credit.service.credit;
 
 import com.payten.credit.controller.credit.CreditStatus;
 import com.payten.credit.repository.credit.CreditEntity;
+import com.payten.credit.repository.user.UserEntity;
+import com.payten.credit.service.user.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,6 +20,7 @@ public class Credit implements Serializable {
     private Double creditLimit;
     private LocalDateTime createdDate;
     private CreditStatus creditStatus;
+    private User owner;
 
     public static Credit convertFrom(CreditEntity credit, CreditStatus status) {
         return Credit.builder()
@@ -25,6 +28,7 @@ public class Credit implements Serializable {
                 .creditLimit(credit.getCreditLimit())
                 .creditStatus(status)
                 .createdDate(credit.getCreatedDate())
+                .owner(User.convertFrom(credit.getUser()))
                 .build();
     }
 
@@ -32,6 +36,7 @@ public class Credit implements Serializable {
         return Credit.builder()
                 .creditLimit(0D)
                 .creditStatus(rejected)
+                .owner(null)
                 .build();
     }
 }

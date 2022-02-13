@@ -7,12 +7,14 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CreditResultResponse {
+    private Long id;
     private CreditStatus status;
     private Double creditLimit;
 
     public static CreditResultResponse from(Credit credit) {
         CreditResultResponse resultResponse =  new CreditResultResponse();
         resultResponse.setStatus(credit.getCreditStatus());
+        resultResponse.setId(credit.getOwner().getId());
         resultResponse.setCreditLimit(credit.getCreditStatus().equals(CreditStatus.APPROVED) ? credit.getCreditLimit() : 0);
         return resultResponse;
     }

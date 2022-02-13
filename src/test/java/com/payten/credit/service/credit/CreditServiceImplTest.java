@@ -131,6 +131,7 @@ class CreditServiceImplTest {
         CreditEntity entity = new CreditEntity();
         entity.setId(1L);
         entity.setCreditLimit(10000D);
+        entity.setUser(new UserEntity());
 
         when(creditCache.retrieveCredit(anyLong())).thenReturn(Optional.empty());
         when(creditDao.retrieveByIdentificationNo(anyLong())).thenReturn(Optional.of(entity));
