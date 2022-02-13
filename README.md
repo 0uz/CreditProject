@@ -19,7 +19,7 @@ docker-compose up --force-recreate
 :white_check_mark: Redis <br>
 :white_check_mark: Docker <br>
 
-###Tools
+### Tools
 
 :white_check_mark: Swagger Open API <br>
 :white_check_mark: Redis Commander <br>
@@ -27,7 +27,7 @@ docker-compose up --force-recreate
 ---
 
 ## Documentation
-###Swagger
+### Swagger
 
 ```html
 http://localhost:8080/swagger-ui/index.html
@@ -44,7 +44,7 @@ http://localhost:8081
 
 ---
 
-##Frontend
+## Frontend
 
 ```html
 cd CreditProjectFrontend
@@ -56,7 +56,7 @@ cd CreditProjectFrontend
 
 ---
 
-##Exception Handling
+## Exception Handling
 Exceptions handled<br>
 ![exception](photo/exceptionHandle1.png)
 ![exception](photo/exceptionHandle2.png)
