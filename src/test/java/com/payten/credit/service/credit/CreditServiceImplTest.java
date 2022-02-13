@@ -7,6 +7,7 @@ import com.payten.credit.repository.credit.CreditEntity;
 import com.payten.credit.repository.credit.redis.CreditCache;
 import com.payten.credit.repository.user.UserDao;
 import com.payten.credit.repository.user.UserEntity;
+import com.payten.credit.service.sms.SmsService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -35,13 +36,17 @@ class CreditServiceImplTest {
     @Mock
     CreditCache creditCache;
 
+    @Mock
+    SmsService smsService;
+
 
     @BeforeEach
     void setUp() {
         service = new CreditServiceImpl(
                 creditDao,
                 userDao,
-                creditCache);
+                creditCache,
+                smsService);
     }
 
     @Test

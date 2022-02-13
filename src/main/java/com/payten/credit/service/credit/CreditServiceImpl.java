@@ -8,6 +8,7 @@ import com.payten.credit.repository.credit.CreditEntity;
 import com.payten.credit.repository.credit.redis.CreditCache;
 import com.payten.credit.repository.user.UserDao;
 import com.payten.credit.repository.user.UserEntity;
+import com.payten.credit.service.sms.SmsService;
 import com.payten.credit.service.user.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,6 +24,7 @@ public class CreditServiceImpl implements CreditService{
     private final CreditDao creditDao;
     private final UserDao userDao;
     private final CreditCache creditCache;
+    private final SmsService smsService;
 
     @Override
     public Credit applyCredit(Long userId) {
@@ -35,6 +37,7 @@ public class CreditServiceImpl implements CreditService{
             credit.setCreditLimit(user.getCreditLimit());
             credit.setUser(userEntity);
             creditDao.save(credit);
+            smsService.sendSmsToPhoneNumber(user.getPhoneNo());
             return Credit.convertFrom(credit, CreditStatus.APPROVED);
         }else{
             return Credit.convertFrom(CreditStatus.REJECTED);

@@ -36,7 +36,6 @@ public class Credit implements Serializable {
         return Credit.builder()
                 .creditLimit(0D)
                 .creditStatus(rejected)
-                .owner(null)
                 .build();
     }
 }

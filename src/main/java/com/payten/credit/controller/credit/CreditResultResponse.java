@@ -14,7 +14,7 @@ public class CreditResultResponse {
     public static CreditResultResponse from(Credit credit) {
         CreditResultResponse resultResponse =  new CreditResultResponse();
         resultResponse.setStatus(credit.getCreditStatus());
-        resultResponse.setId(credit.getOwner().getId());
+        if (credit.getOwner() != null) resultResponse.setId(credit.getOwner().getId());
         resultResponse.setCreditLimit(credit.getCreditStatus().equals(CreditStatus.APPROVED) ? credit.getCreditLimit() : 0);
         return resultResponse;
     }
